@@ -2,8 +2,8 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'giphy-book',
-    podModulePrefix: 'giphy-book/pods',
+    modulePrefix: 'giphy-connect',
+    podModulePrefix: 'giphy-connect/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',

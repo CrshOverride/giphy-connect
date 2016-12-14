@@ -1,7 +1,7 @@
 {
-  "name": "giphy-book",
+  "name": "giphy-connect",
   "version": "0.0.0",
-  "description": "Small description for giphy-book goes here",
+  "description": "Share your favorite GIFs w/ your Facebook Friends",
   "private": true,
   "directories": {
     "doc": "doc",
