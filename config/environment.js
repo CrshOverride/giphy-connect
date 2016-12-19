@@ -21,6 +21,16 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+
+    torii: {
+      providers: {
+        'facebook-connect': {
+          appId: '252774521809205'
+        }
+      }
+    },
+
+    localStorageKey: 'giphyconnect'
   };
 
   if (environment === 'development') {
