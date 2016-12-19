@@ -33,6 +33,10 @@ module.exports = function(environment) {
     localStorageKey: 'giphyconnect'
   };
 
+  ENV['ember-simple-auth'] = {
+    authenticationRoute: 'application'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
