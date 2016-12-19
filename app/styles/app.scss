@@ -1,0 +1,28 @@
+.masthead {
+  &.segment {
+    min-height: 500px;
+    padding: 1em 0em;
+  }
+
+  h1.ui.header {
+    margin-top: 1.25em;
+    margin-bottom: 0em;
+    font-size: 4em;
+    font-weight: normal;
+  }
+
+  h2 {
+    font-size: 1.7em;
+    font-weight: normal;
+  }
+
+  .huge.button {
+    margin-top: 1em;
+  }
+}
+
+.ui {
+  &.vertical.stripe {
+    padding: 8em 0em;
+  }
+}

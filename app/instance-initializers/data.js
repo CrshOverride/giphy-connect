@@ -36,34 +36,36 @@ const defaultGroupMemberships = [
 export function initialize(appInstance) {
   const store = appInstance.lookup('service:store');
 
-  // appInstance.inject('route', 'foo', 'service:foo');
-  if (window.localStorage.getItem(ENV.localStorageKey) !== null) {
-    return;
+  if (window.localStorage.getItem('index-users') === null) {
+    defaultUsers.forEach(u => {
+      const user = store.createRecord('user', u);
+      user.save();
+    });
   }
 
-  defaultUsers.forEach(u => {
-    const user = store.createRecord('user', u);
-    user.save();
-  });
+  if (window.localStorage.getItem('index-groups') === null) {
+    defaultGroups.forEach(g => {
+      const group = store.createRecord('group', g);
+      group.save();
+    });
+  }
 
-  defaultGroups.forEach(g => {
-    const group = store.createRecord('group', g);
-    group.save();
-  });
-
-  defaultGroupMemberships.forEach(gm => {
-    const users = store.query('user', { firstName: gm.firstName, lastName: gm.lastName });
-    const groups = store.query('group', { name: gm.name });
-    users.forEach(u => {
-      groups.forEach(g => {
-        const groupMembership = store.createRecord('group-membership', {
-          user: u,
-          group: g
+  if (window.localStorage.getItem('index-group-memberships') === null) {
+    defaultGroupMemberships.forEach(gm => {
+      const userQuery = { filter: { firstName: gm.firstName, lastName: gm.lastName } };
+      store.queryRecord('user', userQuery).then(u => {
+        const groupQuery = { filter: { name: gm.name } };
+        store.queryRecord('group', groupQuery).then(g => {
+          console.log(`Adding ${u.get('fullName')} to ${g.get('name')}...`);
+          const groupMembership = store.createRecord('group-membership', {
+            user: u,
+            group: g
+          });
+          groupMembership.save();
         });
-        groupMembership.save();
       });
     });
-  });
+  }
 }
 
 export default {

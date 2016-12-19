@@ -28,9 +28,7 @@ module.exports = function(environment) {
           appId: '252774521809205'
         }
       }
-    },
-
-    localStorageKey: 'giphyconnect'
+    }
   };
 
   ENV['ember-simple-auth'] = {
