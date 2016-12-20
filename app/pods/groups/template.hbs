@@ -1,0 +1,68 @@
+<div class="ui main text container">
+  <div class="ui stackable grid container">
+    <div class="row">
+      <div class="ten wide column">
+        <h1 class="ui header">Current Groups</h1>
+        <p>Expand a Group to see and modify members</p>
+      </div>
+      <div class="six wide column floated middle aligned right aligned">
+        <div class="ui green icon labeled button" {{action "openModal" "add-group"}}>
+          <i class="add square icon" />
+          Create New Group
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="sixteen wide column">
+        {{#ui-accordion class="styled fluid"}}
+          {{#each model as |group|}}
+            <div class="title">
+              <i class="dropdown icon" />
+              {{group.name}}
+            </div>
+            <div class="content">
+              {{#each group.memberships as |membership|}}
+                <div class="item">
+                  <div class="ui grid">
+                    <div class="row">
+                      <div class="seven wide column">
+                        <img src={{membership.user.photoUrl}} class="ui avatar image" />
+                        {{membership.user.fullName}}
+                      </div>
+                      <div class="one wide column">
+                        <div {{action "removeUserFromGroup" membership}}>
+                          <i class="red circle minus icon" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+              <div class="item">
+                <div class="ui grid">
+                  <div class="row">
+                    <div class="five wide column">
+                      <div class="ui mini green icon labeled button" {{action "openModal" "add-group-member"}}>
+                        <i class="add user icon" />
+                        Add User To Group
+                      </div>
+                    </div>
+                    <div class="four wide column">
+                      <div class="ui mini red icon labeled button" {{action "deleteGroup" group}}>
+                        <i class="remove circle icon" />
+                        Delete Group
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        {{/ui-accordion}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{add-group-modal action="dataChanged"}}
+{{add-group-member-modal}}
