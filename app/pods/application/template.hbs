@@ -1,1 +1,13 @@
+{{#if session.isAuthenticated}}
+  <div class="ui fixed inverted menu">
+    <div class="ui container">
+      {{#link-to "home" classNames="item"}}
+        <img src={{session.data.authenticated.photoUrl}} class="ui avatar image" />
+        Home
+      {{/link-to}}
+      {{#link-to "users" classNames="item"}}Users{{/link-to}}
+      {{#link-to "groups" classNames="item"}}Groups{{/link-to}}
+    </div>
+  </div>
+{{/if}}
 {{outlet}}
