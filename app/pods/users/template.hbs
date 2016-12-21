@@ -19,7 +19,6 @@
         <th>Last Name</th>
         <th>Email Address</th>
         <th>Profile Image</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -29,7 +28,6 @@
           <td>{{user.lastName}}</td>
           <td>{{user.email}}</td>
           <td class="center aligned"><img src={{user.photoUrl}} /></td>
-          <td class="center aligned"><button {{action "editUser" user.id}}>Edit</button></td>
         </tr>
       {{/each}}
     </tbody>
