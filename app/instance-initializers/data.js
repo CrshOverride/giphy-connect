@@ -1,8 +1,3 @@
-import ENV from '../config/environment';
-import Ember from 'ember';
-
-const { inject: { service } } = Ember;
-
 const defaultUsers = [
   {
     firstName: 'Jane',

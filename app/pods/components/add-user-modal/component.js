@@ -30,9 +30,9 @@ export default UiModal.extend({
         this.set('error', "All fields are required!");
       }
 
-      this.set('error', undefined)
+      this.set('error', undefined);
 
-      const newUser = this.get('store').createRecord('user', {
+      this.get('store').createRecord('user', {
         id: this.get('id'),
         firstName: this.get('firstName'),
         lastName: this.get('lastName'),
