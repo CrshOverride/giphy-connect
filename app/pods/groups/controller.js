@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { run: { scheduleOnce } } = Ember;
+
 export default Ember.Controller.extend({
   actions: {
     openModal(name) {
@@ -7,13 +9,38 @@ export default Ember.Controller.extend({
     },
 
     removeUserFromGroup(membership) {
-      this.get('store').deleteRecord(membership);
+      membership.destroyRecord();
       this.send('dataChanged');
     },
 
     deleteGroup(group) {
-      this.get('store').deleteRecord(group);
+      group.destroyRecord();
       this.send('dataChanged');
+    },
+
+    addUserToGroup(group, user) {
+      this.get('store').queryRecord('group-membership', {
+        filter: {
+          user: {
+            id: user.get('id')
+          },
+          group: {
+            id: group.get('id')
+          }
+        }
+      }).then(gm => {
+        if (gm) {
+          return;
+        }
+
+        this.get('store').createRecord('group-membership', {
+          user,
+          group
+        }).save();
+
+
+        this.send('dataChanged');
+      });
     }
   }
 });

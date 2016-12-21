@@ -15,7 +15,7 @@
     <div class="row">
       <div class="sixteen wide column">
         {{#ui-accordion class="styled fluid"}}
-          {{#each model as |group|}}
+          {{#each model.groups as |group|}}
             <div class="title">
               <i class="dropdown icon" />
               {{group.name}}
@@ -41,14 +41,22 @@
               <div class="item">
                 <div class="ui grid">
                   <div class="row">
-                    <div class="five wide column">
-                      <div class="ui mini green icon labeled button" {{action "openModal" "add-group-member"}}>
+                    <div class="seven wide column">
+                      {{#ui-dropdown class="floating labeled icon green button scrolling" onChange=(action "addUserToGroup" group) as |execute mapper|}}
+                        <div class="default text">Add a User</div>
                         <i class="add user icon" />
-                        Add User To Group
-                      </div>
+                        <div class="menu">
+                          {{#each model.users as |user|}}
+                            <div class="item" data-value="{{map-value mapper user}}">
+                              <img src="{{user.photoUrl}}" class="ui avatar image" />
+                              {{user.fullName}}
+                            </div>
+                          {{/each}}
+                        </div>
+                      {{/ui-dropdown}}
                     </div>
-                    <div class="four wide column">
-                      <div class="ui mini red icon labeled button" {{action "deleteGroup" group}}>
+                    <div class="five wide column middle aligned">
+                      <div class="ui red icon labeled button" {{action "deleteGroup" group}}>
                         <i class="remove circle icon" />
                         Delete Group
                       </div>
