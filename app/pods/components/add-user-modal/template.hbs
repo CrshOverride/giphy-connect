@@ -1,0 +1,42 @@
+<i class="close icon" />
+<div class="header">
+  Create New Group
+</div>
+<div class="content">
+  {{#if error}}
+    <div class="ui red inverted segment">
+      {{error}}
+    </div>
+  {{/if}}
+  <form class="ui form" onsubmit={{action 'save'}}>
+    <div class="field">
+      <label for="id">Facebook User ID</label>
+      {{input type="text" name="id" placeholder="Facebook User ID" value=id}}
+    </div>
+    <div class="field">
+      <label for="firstName">First Name</label>
+      {{input type="text" name="firstName" placeholder="First Name" value=firstName}}
+    </div>
+    <div class="field">
+      <label for="lastName">Last Name</label>
+      {{input type="text" name="lastName" placeholder="Last Name" value=lastName}}
+    </div>
+    <div class="field">
+      <label for="email">Email Address</label>
+      {{input type="text" name="email" placeholder="Email Address" value=email}}
+    </div>
+    <div class="field">
+      <label for="photoUrl">Photo Url</label>
+      {{input type="text" name="photoUrl" placeholder="Photo Url" value=photoUrl}}
+    </div>
+  </form>
+</div>
+<div class="actions">
+  <div class="ui red button" onclick={{action "cancel"}}>
+    Cancel
+  </div>
+  <div class="ui right labeled icon green button" onclick={{action "save"}}>
+    Save
+    <i class="checkmark icon" />
+  </div>
+</div>

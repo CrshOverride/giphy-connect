@@ -5,7 +5,7 @@
         <h1 class="ui header">Current Users</h1>
       </div>
       <div class="eight wide column floated right aligned">
-        <div class="ui green button" {{action "addUser"}}>
+        <div class="ui green button" {{action "openModal" "add-user"}}>
           <i class="add user icon" />
           Add New User
         </div>
@@ -19,6 +19,7 @@
         <th>Last Name</th>
         <th>Email Address</th>
         <th>Profile Image</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -28,8 +29,11 @@
           <td>{{user.lastName}}</td>
           <td>{{user.email}}</td>
           <td class="center aligned"><img src={{user.photoUrl}} /></td>
+          <td class="center aligned"><div {{action "deleteUser" user}}><i class="red minus circle icon" /></div></td>
         </tr>
       {{/each}}
     </tbody>
   </table>
 </div>
+
+{{add-user-modal action="dataChanged"}}

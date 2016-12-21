@@ -1,14 +1,12 @@
 <i class="close icon" />
 <div class="header">
-  Add New Group
+  Create New Group
 </div>
 <div class="content">
-  <form class="ui form">
+  <form class="ui form" onsubmit={{action "save"}}>
     <div class="field">
       <label for="name">Name</label>
-      <div class="field">
-        {{input value=groupName placeholder="Group Name"}}
-      </div>
+      {{input value=groupName placeholder="Group Name"}}
     </div>
   </form>
 </div>

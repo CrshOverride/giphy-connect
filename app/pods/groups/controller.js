@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-const { run: { scheduleOnce } } = Ember;
-
 export default Ember.Controller.extend({
   actions: {
     openModal(name) {

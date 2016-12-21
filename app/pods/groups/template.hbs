@@ -41,7 +41,7 @@
               <div class="item">
                 <div class="ui grid">
                   <div class="row">
-                    <div class="seven wide column">
+                    <div class="eight wide column">
                       {{#ui-dropdown class="floating labeled icon green button scrolling" onChange=(action "addUserToGroup" group) as |execute mapper|}}
                         <div class="default text">Add a User</div>
                         <i class="add user icon" />
@@ -55,12 +55,14 @@
                         </div>
                       {{/ui-dropdown}}
                     </div>
-                    <div class="five wide column middle aligned">
-                      <div class="ui red icon labeled button" {{action "deleteGroup" group}}>
-                        <i class="remove circle icon" />
-                        Delete Group
+                    {{#if group.isEmpty}}
+                      <div class="eight wide column middle right aligned">
+                        <div class="ui red icon labeled button" {{action "deleteGroup" group}}>
+                          <i class="remove circle icon" />
+                          Delete Group
+                        </div>
                       </div>
-                    </div>
+                    {{/if}}
                   </div>
                 </div>
               </div>

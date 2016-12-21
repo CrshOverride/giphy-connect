@@ -10,5 +10,9 @@ export default DS.Model.extend({
 
   users: computed('memberships.@each', function() {
     return this.get('memberships').mapBy('user');
+  }),
+
+  isEmpty: computed('users', function() {
+    return this.get('users.length') === 0;
   })
 });
